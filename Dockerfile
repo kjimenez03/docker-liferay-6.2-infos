@@ -13,11 +13,32 @@
 # 0.0.8 : liferay 6.2-ce-ga5
 # 0.0.9 : liferay 6.2-ce-ga6
 
-FROM snasello/docker-debian-java7:7u79
+FROM debian
 
 MAINTAINER Samuel Nasello <samuel.nasello@elosi.com>
 
-# install liferay
+########################################################################
+# INSTALAR Y CONFIGURAR JAVA
+########################################################################
+RUN apt-get update \
+	&& apt-get install -y curl tar unzip \
+	&& (curl -s -k -L -C - -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz | tar xfz - -C /opt) \
+	&& mv /opt/jdk1.7.0_79/jre /opt/jre1.7.0_79 \
+	&& mv /opt/jdk1.7.0_79/lib/tools.jar /opt/jre1.7.0_79/lib/ext \
+	&& rm -Rf /opt/jdk1.7.0_79 \
+	&& ln -s /opt/jre1.7.0_79 /opt/java
+
+# Set JAVA_HOME
+ENV JAVA_HOME /opt/java
+
+########################################################################
+# FIN JAVA
+########################################################################
+
+
+########################################################################
+# INSTALAR Y CONFIGURAR LIFERAY
+########################################################################
 RUN curl -O -s -k -L -C - http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.2.5%20GA6/liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip \
 	&& unzip liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip -d /opt \
 	&& rm liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip
