@@ -13,20 +13,26 @@
 # 0.0.8 : liferay 6.2-ce-ga5
 # 0.0.9 : liferay 6.2-ce-ga6
 
-FROM debian
+FROM debian:stable
 
 MAINTAINER Samuel Nasello <samuel.nasello@elosi.com>
 
 ########################################################################
 # INSTALAR Y CONFIGURAR JAVA
 ########################################################################
-RUN apt-get update \
-	&& apt-get install -y curl tar unzip \
-	&& (curl -s -k -L -C - -b "oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u79-b15/jdk-7u79-linux-x64.tar.gz | tar xfz - -C /opt) \
-	&& mv /opt/jdk1.7.0_79/jre /opt/jre1.7.0_79 \
-	&& mv /opt/jdk1.7.0_79/lib/tools.jar /opt/jre1.7.0_79/lib/ext \
-	&& rm -Rf /opt/jdk1.7.0_79 \
-	&& ln -s /opt/jre1.7.0_79 /opt/java
+RUN apt-get update
+RUN apt-get install -y curl tar unzip 
+RUN apt-get install -y curl tar nano 
+RUN apt-get install -y curl tar wget 
+
+RUN wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz
+
+
+RUN tar xzf jdk-8u131-linux-x64.tar.gz -C /opt
+RUN mv /opt/jdk1.8.0_131/jre /opt/jre1.8.0_131 
+RUN mv /opt/jdk1.8.0_131/lib/tools.jar /opt/jre1.8.0_131/lib/ext 
+RUN rm -Rf /opt/jdk1.8.0_131 
+RUN ln -s /opt/jre1.8.0_131 /opt/java
 
 # Set JAVA_HOME
 ENV JAVA_HOME /opt/java
