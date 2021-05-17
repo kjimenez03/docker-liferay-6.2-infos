@@ -15,7 +15,7 @@
 
 FROM debian:stable
 
-MAINTAINER Samuel Nasello <samuel.nasello@elosi.com>
+MAINTAINER Kevin Jiménez <kjimenez@infosgroup.cr>
 
 ########################################################################
 # INSTALAR Y CONFIGURAR JAVA
@@ -49,13 +49,22 @@ RUN curl -O -s -k -L -C - http://downloads.sourceforge.net/project/lportal/Lifer
 	&& unzip liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip -d /opt \
 	&& rm liferay-portal-tomcat-6.2-ce-ga6-20160112152609836.zip
 
+
 # add config for bdd
 RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-bd-${DB_TYPE}.properties"' >> /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin/setenv.sh
 
-# add configuration liferay file
+###################################
+# Add configuration liferay file
+###################################
 ADD lep/portal-bundle.properties /opt/liferay-portal-6.2-ce-ga6/portal-bundle.properties
 ADD lep/portal-bd-MYSQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd-MYSQL.properties
 ADD lep/portal-bd-POSTGRESQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd-POSTGRESQL.properties
+
+###################################
+# Porlet Installation
+###################################
+ADD lep/PortalBelen-form-portlet.war /opt/liferay-portal-6.2-ce-ga6/deploy
+ADD lep/web-form-portlet-6-2.war /opt/liferay-portal-6.2-ce-ga6/deploy
 
 # volumes
 VOLUME ["/var/liferay-home", "/opt/liferay-portal-6.2-ce-ga6/"]
