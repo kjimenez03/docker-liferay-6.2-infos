@@ -63,8 +63,8 @@ ADD lep/portal-bd-POSTGRESQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd
 ###################################
 # Porlet Installation
 ###################################
-ADD lep/PortalBelen-form-portlet.war /opt/liferay-portal-6.2-ce-ga6/deploy/PortalBelen-form-portlet.war
-ADD lep/web-form-portlet-6-2.war /opt/liferay-portal-6.2-ce-ga6/deploy/web-form-portlet-6-2.war
+ADD lep/PortalBelen-form-portlet.war /var/liferay-home/deploy/PortalBelen-form-portlet.war
+ADD lep/web-form-portlet-6-2.war /var/liferay-home/deploy/web-form-portlet-6-2.war
 
 # volumes
 VOLUME ["/var/liferay-home", "/opt/liferay-portal-6.2-ce-ga6/"]
