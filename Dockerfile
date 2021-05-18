@@ -65,6 +65,7 @@ ADD lep/portal-bd-POSTGRESQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd
 ###################################
 ADD lep/PortalBelen-form-portlet.war /var/liferay-home/deploy/PortalBelen-form-portlet.war
 ADD lep/web-form-portlet-6-2.war /var/liferay-home/deploy/web-form-portlet-6-2.war
+ADD lep/mysql-connector-java-8.0.25.jar /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/lib/ext/mysql-connector-java-8.0.25.jar 
 
 # volumes
 VOLUME ["/var/liferay-home", "/opt/liferay-portal-6.2-ce-ga6/"]
