@@ -54,6 +54,7 @@ RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-b
 COPY lep/Configs/portal-ext.properties /opt/liferay-portal-6.2-ce-ga6/
 COPY lep/Configs/portal-bundle.properties /opt/liferay-portal-6.2-ce-ga6/
 COPY lep/Configs/portal-bd-MYSQL.properties /opt/liferay-portal-6.2-ce-ga6/
+COPY lep/Configs/logging.properties /opt/liferay-portal-6.2-ce-ga6/tomcat-9.0.17/conf/logging.properties
 
 ###################################
 # ADD HEALTH CHECKS
