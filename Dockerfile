@@ -66,13 +66,13 @@ COPY lep/Checks/. /usr/local/sbin/
 # ADD CRONTAB FOR CHECKS
 ###################################
 
-RUN */10 * * * * root /usr/local/sbin/check_liferay /opt/liferay-ce-portal-7.2.0-ga1/tomcat-9.0.17/ root  liferay-portal /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/logs/catalina.out no-responder@infosgroup.cr kjimenez@infosgroup.cr  300 >> /etc/crontab
-RUN */1440 * * * * root /usr/local/sbin/check_disk_usage no-responder@infosgroup.cr kjimenez@infosgroup.cr 90 >> /etc/crontab
+#RUN */10 * * * * root /usr/local/sbin/check_liferay /opt/liferay-ce-portal-7.2.0-ga1/tomcat-9.0.17/ root  liferay-portal /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/logs/catalina.out no-responder@infosgroup.cr kjimenez@infosgroup.cr  300 >> /etc/crontab
+#RUN */1440 * * * * root /usr/local/sbin/check_disk_usage no-responder@infosgroup.cr kjimenez@infosgroup.cr 90 >> /etc/crontab
 
 ###################################
 # RELOAD CRONTAB
 ###################################
-RUN service cron reload
+#RUN service cron reload
 
 ###################################
 # ADD TOMCAT CONFIGS
