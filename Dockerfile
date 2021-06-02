@@ -46,14 +46,14 @@ RUN curl -O -s -k -L -C - http://downloads.sourceforge.net/project/lportal/Lifer
 ###################################
 
 # add config for bdd
-RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-bd-MYSQL.properties"' >> /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin/setenv.sh
+#RUN /bin/echo -e '\nCATALINA_OPTS="$CATALINA_OPTS -Dexternal-properties=portal-bd-MYSQL.properties"' >> /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin/setenv.sh
 
 ###################################
 # ADD LIFERAY CONFIGS
 ###################################
 COPY lep/Configs/portal-ext.properties /opt/liferay-portal-6.2-ce-ga6/portal-ext.properties
 COPY lep/Configs/portal-bundle.properties /opt/liferay-portal-6.2-ce-ga6/portal-bundle.properties
-COPY lep/Configs/portal-bd-MYSQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd-MYSQL.properties
+#COPY lep/Configs/portal-bd-MYSQL.properties /opt/liferay-portal-6.2-ce-ga6/portal-bd-MYSQL.properties
 COPY lep/Configs/logging.properties /opt/liferay-portal-6.2-ce-ga6/tomcat-9.0.17/conf/logging.properties
 
 ###################################
@@ -66,8 +66,8 @@ COPY lep/Checks/. /usr/local/sbin/
 # ADD CRONTAB FOR CHECKS
 ###################################
 
-#RUN */10 * * * * root /usr/local/sbin/check_liferay /opt/liferay-ce-portal-7.2.0-ga1/tomcat-9.0.17/ root  liferay-portal /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/logs/catalina.out no-responder@infosgroup.cr kjimenez@infosgroup.cr  300 >> /etc/crontab
-#RUN */1440 * * * * root /usr/local/sbin/check_disk_usage no-responder@infosgroup.cr kjimenez@infosgroup.cr 90 >> /etc/crontab
+RUN /bin/echo -e '*/10 * * * * root /usr/local/sbin/check_liferay /opt/liferay-ce-portal-7.2.0-ga1/tomcat-9.0.17/ root  liferay-portal /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/logs/catalina.out no-responder@infosgroup.cr kjimenez@infosgroup.cr  300' >> /etc/crontab
+RUN /bin/echo -e '*/1440 * * * * root /usr/local/sbin/check_disk_usage no-responder@infosgroup.cr kjimenez@infosgroup.cr 90' >> /etc/crontab
 
 ###################################
 # RELOAD CRONTAB
@@ -78,7 +78,7 @@ COPY lep/Checks/. /usr/local/sbin/
 # ADD TOMCAT CONFIGS
 ###################################
 #COPY lep/Configs/setenv.sh /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin/setenv.sh
-#COPY lep/Configs/context.xml /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/config/context.xml
+COPY lep/Configs/context.xml /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/config/context.xml
 
 
 ###################################
