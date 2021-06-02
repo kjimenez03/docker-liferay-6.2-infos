@@ -77,7 +77,7 @@ RUN /bin/echo -e '*/1440 * * * * root /usr/local/sbin/check_disk_usage no-respon
 ###################################
 # ADD TOMCAT CONFIGS
 ###################################
-COPY lep/Configs/setenv.sh /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin/setenv.sh
+#COPY lep/Configs/setenv.sh /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/bin/setenv.sh
 COPY lep/Configs/context.xml /opt/liferay-portal-6.2-ce-ga6/tomcat-7.0.62/config/context.xml
 
 
