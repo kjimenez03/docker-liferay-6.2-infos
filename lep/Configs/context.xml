@@ -32,10 +32,10 @@
    <Resource 
 		auth="Container"
 		description="Conexion portal"
-		driverClassName="com.mysql.cj.jdbc.Driver"
+		driverClassName="com.mysql.jdbc.Driver"
 		name="jdbc/LiferayPool"
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
-		type="javax.sql.XADataSource"
+		type="javax.sql.DataSource"
 		url="jdbc:mysql://172.26.176.5/liferay?useUnicode=true&amp;characterEncoding=UTF-8&amp;useFastDateParsing=false"
 		username="liferay"
 		password="liferay"
