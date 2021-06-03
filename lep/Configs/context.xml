@@ -28,13 +28,13 @@
     <!--
     <Manager pathname="" />
     -->
-			<!--factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"-->
+			
    <Resource 
 		auth="Container"
 		description="Conexion portal"
 		driverClassName="com.mysql.jdbc.Driver"
 		name="jdbc/LiferayPool"
-
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
 		type="javax.sql.DataSource"
 		url="jdbc:mysql://172.26.176.2/liferay?useUnicode=true&amp;characterEncoding=UTF-8&amp;useFastDateParsing=false"
 		username="liferay"
