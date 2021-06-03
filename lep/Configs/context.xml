@@ -36,7 +36,7 @@
 		name="jdbc/LiferayPool"
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
 		type="javax.sql.XADataSource"
-		url="jdbc:mysql://172.26.176.2/liferay?useUnicode=true&amp;characterEncoding=UTF-8&amp;useFastDateParsing=false"
+		url="jdbc:mysql://172.26.176.5/liferay?useUnicode=true&amp;characterEncoding=UTF-8&amp;useFastDateParsing=false"
 		username="liferay"
 		password="liferay"
 		maxActive="5000" 
